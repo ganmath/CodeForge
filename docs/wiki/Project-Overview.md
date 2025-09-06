@@ -1,3 +1,3 @@
 
 # Project Overview
-CodeForge is a Spring Boot CRUD template skeleton showing connectivity, testing, CI/CD, and AWS deploy.
+CodeForge is a full-stack development template showing connectivity, testing, CI/CD, and AWS deploy.
