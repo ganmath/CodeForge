@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+codeforge:
+  mongo:
+    enabled: false
+
+logging:
+  level:
+    com.codeforge: INFO
+    org.springframework: WARN
