@@ -20,7 +20,8 @@ export default function Home() {
 
   return (
     <main style={{ padding: 24, fontFamily: 'sans-serif' }}>
-      <h1>Spring Boot CRUD Template</h1>
+      <h1>CodeForge Platform</h1>
+      <p style={{ color: '#666', fontSize: '14px', marginTop: '8px' }}>Enterprise Full-Stack Development Platform</p>
       <p>API Base: {API_BASE}</p>
       <button onClick={ping}>Ping API</button>
       <pre id="result">{result}</pre>

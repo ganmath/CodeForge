@@ -11,18 +11,18 @@ Full-stack development template with Spring Boot backend, Next.js frontend, and 
 
 ### Backend (Java 21, Spring Boot 3 WebFlux)
 
-**Windows (PowerShell/CMD):**
-```cmd
+**Windows (PowerShell):**
+```powershell
 cd backend
-cmd /c mvnw.cmd -q -DskipTests package
-cmd /c mvnw.cmd -q -Dspring-boot.run.profiles=local -Dcodeforge.mongo.enabled=false spring-boot:run
+.\mvnw.cmd -q -DskipTests package
+.\mvnw.cmd -q spring-boot:run "-Dspring-boot.run.profiles=local" "-Dcodeforge.mongo.enabled=false"
 ```
 
 **Unix/Linux/macOS:**
 ```bash
 cd backend
 ./mvnw -q -DskipTests package
-./mvnw -q -Dspring-boot.run.profiles=local -Dcodeforge.mongo.enabled=false spring-boot:run
+./mvnw -q spring-boot:run -Dspring-boot.run.profiles=local -Dcodeforge.mongo.enabled=false
 ```
 
 **Verify:** http://localhost:8080/api/ping
@@ -105,3 +105,12 @@ See `terraform/` directory and Wiki Deployment Guide for infrastructure setup.
 - **Maven wrapper not found:** Use `cmd /c mvnw.cmd` on Windows
 - **Tests fail:** Ensure MongoDB is disabled with `-Dcodeforge.mongo.enabled=false`
 - **Port conflicts:** Check ports 8080 (backend) and 3000 (frontend) are available
+
+### Kill Process on Port 8080 (Windows)
+```cmd
+# Find process using port 8080
+netstat -ano | findstr :8080
+
+# Kill the process (replace PID with actual process ID)
+taskkill /PID <PID> /F
+```
