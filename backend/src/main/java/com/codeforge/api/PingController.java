@@ -9,7 +9,11 @@ import java.util.Map;
 @RestController
 public class PingController {
     @GetMapping("/api/ping")
-    public Mono<Map<String,Object>> ping() {
-        return Mono.just(Map.of("status","ok","ts", Instant.now().toString()));
+    public Mono<Map<String, Object>> ping() {
+        return Mono.just(Map.of(
+            "status", "ok",
+            "timestamp", Instant.now(),
+            "service", "codeforge-backend"
+        ));
     }
 }
