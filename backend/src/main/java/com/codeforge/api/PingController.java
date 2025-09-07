@@ -12,7 +12,7 @@ public class PingController {
     public Mono<Map<String, Object>> ping() {
         return Mono.just(Map.of(
             "status", "ok",
-            "timestamp", Instant.now(),
+            "timestamp", Instant.now().toString(),
             "service", "codeforge-backend"
         ));
     }

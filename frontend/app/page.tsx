@@ -2,9 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { handleApiCall, pingApi } from '../lib/api';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080';
+import { jsonFetch } from '../lib/jsonFetch';
 
 export default function Home() {
   const [result, setResult] = useState<string>('');
@@ -16,8 +14,8 @@ export default function Home() {
     setError(null);
     
     try {
-      const json = await handleApiCall(pingApi);
-      setResult(`status: ${json.status} | service: ${json.service}`);
+      const json = await jsonFetch("/api/ping"); // uses Next.js dev proxy
+      setResult(`status: ${json.status}`);
     } catch (e) {
       setError('Backend connection failed');
       setResult('');
@@ -35,8 +33,8 @@ export default function Home() {
         {loading ? 'Checking...' : 'Ping API'}
       </button>
       {loading && <p>Checking backend connection...</p>}
-      {error && <p style={{color: 'red'}}>{error}</p>}
-      {result && <p style={{color: 'green'}}>{result}</p>}
+      {error && <p style={{ color: "crimson" }}>{error}</p>}
+      {result && <p style={{ color: "seagreen" }}>{result}</p>}
     </main>
   );
 }
