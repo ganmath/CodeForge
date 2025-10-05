@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { jsonFetch } from '../lib/jsonFetch';
+import { API_BASE } from '../lib/apiBase';
 
 export default function Home() {
   const [result, setResult] = useState<string>('');
@@ -28,7 +29,7 @@ export default function Home() {
     <main style={{ padding: 24, fontFamily: 'sans-serif' }}>
       <h1>CodeForge Platform</h1>
       <p style={{ color: '#666', fontSize: '14px', marginTop: '8px' }}>Enterprise Full-Stack Development Platform</p>
-      <p>API Base: {API_BASE}</p>
+      <p>API Base: {API_BASE || 'Using dev proxy'}</p>
       <button onClick={ping} disabled={loading}>
         {loading ? 'Checking...' : 'Ping API'}
       </button>
